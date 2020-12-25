@@ -3,24 +3,14 @@
 #configuration
 
 1 - ajouter les cdn suivants:
- <link href="https://cdn.jsdelivr.net/npm/froala-editor@3.1.0/css/froala_editor.pkgd.min.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/froala-editor@3.1.0/js/froala_editor.pkgd.min.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/froala-editor@3.1.0/js/plugins/image.min.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/froala-editor@3.1.0/js/plugins/image_manager.min.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/froala-editor@3.1.0/js/plugins/file.min.js"></script>
+
 
 2 - integration froala editor dans un formulaire
- <form method="POST" action="http://localhost:3000/description">
-            <textarea name="content" id="editor_style">     
-              first parag 
-            </textarea>
-            <br></br>
-            <input type="submit" id="send_to_editor" class="btn btn-primary"/>
- </form>
+
  nb: dans mon cas j'envoi du POST vers  http://localhost:3000/description 
  
 3 - ajouter les scripts nécessaire pour notre editeur 
-<script>
+
             var editor = new FroalaEditor('#editor_style',{
         
             imageUploadParam: 'xt-photo-file',
@@ -71,6 +61,6 @@
            }
             
             })
- </script>
+
  
  nb : pour autres configuration vous pouvez visiter https://froala.com/wysiwyg-editor/docs/overview/
