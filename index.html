@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="css/style.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/froala-editor@3.1.0/css/froala_editor.pkgd.min.css" rel="stylesheet" type="text/css" />
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/froala-editor@3.1.0/js/froala_editor.pkgd.min.js"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/froala-editor@3.1.0/js/plugins/image.min.js"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/froala-editor@3.1.0/js/plugins/image_manager.min.js"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/froala-editor@3.1.0/js/plugins/file.min.js"></script>
+    </head>
+    <!-- exemple de controller ou on va inserer notre description http://localhost:3000/description-->
+    
+    <body>
+        <form method="POST" action="http://localhost:3000/description">
+            <textarea name="content" id="editor_style">     
+              first parag 
+            </textarea>
+            <br></br>
+            <input type="submit" id="send_to_editor" class="btn btn-primary"/>
+          </form>
+          <script>
+            var editor = new FroalaEditor('#editor_style',{
+            // Set the image upload parameter.
+            imageUploadParam: 'xt-photo-file',
+            
+            // Set the image upload URL.
+            imageUploadURL: 'http://localhost:3000/images',
+            
+            // Additional upload params.
+            imageUploadParams: {documentId: 'editor_style'},
+            
+            // Set request type.
+            imageUploadMethod: 'POST',
+            
+            
+            
+            // Set max image size to 5MB.
+            //imageMaxSize: 5 * 1024 * 1024,
+            
+            // Allow to upload PNG and JPG.
+            imageAllowedTypes: ['jpeg', 'jpg', 'png'],
+            
+           
+            
+            events: {
+           
+           'image.uploaded': function (response) {
+               //decouper le reponse du serveur de façon que tu  prend le nom de l'image avec l'extension
+               //dans mon exemple de cette maniére 
+           var url = response.split('"')[3];
+           
+           var editor = this;
+           console.log(url)
+           editor.image.insert('http://localhost:3000/images/'+ url, false, null, editor.image.get(), response);
+           
+           return false;
+           },
+           'image.removed': function ($img) {
+           var xhttp = new XMLHttpRequest();
+           xhttp.onreadystatechange = function() {
+           // Image was removed.
+           if (this.status == 200) {
+           console.log ('image was deleted');
+           }
+           };
+           xhttp.open("DELETE", $img[0].src.split('.')[0]+'?ext='+$img[0].src.split('.')[1] , true);
+           xhttp.send();
+           }
+           }
+            
+            })
+          </script>
+    </body>
+</html>
