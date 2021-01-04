@@ -2,7 +2,7 @@
 
 #configuration
 
-1 - ajouter les cdn suivants:
+1 - ajouter les cdn nécessaire:
 dans le head partie code
 
 2 - integration froala editor dans un formulaire
