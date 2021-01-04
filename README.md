@@ -3,7 +3,11 @@
 #configuration
 
 1 - ajouter les cdn suivants:
-
+ <link href="https://cdn.jsdelivr.net/npm/froala-editor@3.1.0/css/froala_editor.pkgd.min.css" rel="stylesheet" type="text/css" />
+ <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/froala-editor@3.1.0/js/froala_editor.pkgd.min.js"></script>
+ <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/froala-editor@3.1.0/js/plugins/image.min.js"></script>
+ <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/froala-editor@3.1.0/js/plugins/image_manager.min.js"></script>
+ <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/froala-editor@3.1.0/js/plugins/file.min.js"></script>
 
 2 - integration froala editor dans un formulaire
 
